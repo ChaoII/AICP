@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<root>
-	<area name="东区">
-		<camera name="camera1" type="IPCamera" band="HK" IP="10.36.4.92" port="554" userName="admin" password="bossien1234"></camera>
-	</area>
-</root>
