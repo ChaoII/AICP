@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>VideoPanel</class>
+ <widget class="QWidget" name="VideoPanel">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>649</width>
+    <height>418</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <action name="action_1">
+   <property name="icon">
+    <iconset resource="qrc.qrc">
+     <normaloff>:/images/options.png</normaloff>:/images/options.png</iconset>
+   </property>
+   <property name="text">
+    <string>界面类型1</string>
+   </property>
+  </action>
+  <action name="action_9">
+   <property name="icon">
+    <iconset resource="qrc.qrc">
+     <normaloff>:/images/options.png</normaloff>:/images/options.png</iconset>
+   </property>
+   <property name="text">
+    <string>界面类型9</string>
+   </property>
+  </action>
+  <action name="action_6">
+   <property name="icon">
+    <iconset resource="qrc.qrc">
+     <normaloff>:/images/options.png</normaloff>:/images/options.png</iconset>
+   </property>
+   <property name="text">
+    <string>界面类型6</string>
+   </property>
+  </action>
+  <action name="action_4">
+   <property name="icon">
+    <iconset resource="qrc.qrc">
+     <normaloff>:/images/options.png</normaloff>:/images/options.png</iconset>
+   </property>
+   <property name="text">
+    <string>界面类型4</string>
+   </property>
+  </action>
+  <action name="actionFullScreen">
+   <property name="icon">
+    <iconset resource="qrc.qrc">
+     <normaloff>:/images/fullscreen.png</normaloff>:/images/fullscreen.png</iconset>
+   </property>
+   <property name="text">
+    <string>全屏</string>
+   </property>
+  </action>
+  <action name="actionNormal">
+   <property name="icon">
+    <iconset resource="qrc.qrc">
+     <normaloff>:/images/normalscreen.png</normaloff>:/images/normalscreen.png</iconset>
+   </property>
+   <property name="text">
+    <string>恢复</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="qrc.qrc"/>
+ </resources>
+ <connections/>
+</ui>

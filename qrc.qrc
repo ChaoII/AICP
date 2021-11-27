@@ -1,0 +1,31 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/add.png</file>
+        <file>images/delete.png</file>
+        <file>images/area.png</file>
+        <file>images/ico.png</file>
+        <file>images/IPCamera.png</file>
+        <file>images/USBCamera.png</file>
+        <file>images/preview.png</file>
+        <file>images/setting.png</file>
+        <file>images/normalscreen.png</file>
+        <file>images/options.png</file>
+        <file>images/play.png</file>
+        <file>images/stop.png</file>
+        <file>images/logo1.png</file>
+        <file>images/logo.png</file>
+        <file>images/close.png</file>
+        <file>images/maxium.png</file>
+        <file>images/minium.png</file>
+        <file>images/normal.png</file>
+        <file>images/fullscreen.png</file>
+        <file>images/windowcut.png</file>
+        <file>images/windowcut_1.png</file>
+        <file>images/windowcut_4.png</file>
+        <file>images/windowcut_6.png</file>
+        <file>images/windowcut_9.png</file>
+        <file>images/closevideos.png</file>
+        <file>images/openvideos.png</file>
+        <file>images/setting1.png</file>
+    </qresource>
+</RCC>
