@@ -33,7 +33,7 @@ public:
     QString getUserName();
     QString getPassword();
     CameraType getCameraType();
-    CameraBand getCameraBand();
+    QString getCameraBand();
     void setCameraType(QString type);
     void setCameraBand(QString band);
     QString getItemID();
@@ -57,12 +57,13 @@ private:
     QString mPassword;
     QString mItemId;
     CameraType mCameraType;
-    CameraBand mCameraBand;
+    QString mCameraBand;
     int mCurrentCameraIndex;
     QList<QCameraDevice> mAllCameraDevices;
     bool mIsStarted= false;
     bool mConnectStatus = false;
     int mCameraShowLabelIndex;
+    static int camera_nums;
 };
 
 #endif // CAMERA_H

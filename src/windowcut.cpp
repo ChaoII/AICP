@@ -1,8 +1,7 @@
 #include "windowcut.h"
 #include "ui_windowcut.h"
 
-WindowCut::WindowCut(QWidget *parent) :
-    QWidget(parent),
+WindowCut::WindowCut(QWidget *parent) :QWidget(parent),
     ui(new Ui::WindowCut)
 {
     ui->setupUi(this);
@@ -20,7 +19,6 @@ void WindowCut::clearAllSelectStatus()
 
 WindowCut::~WindowCut()
 {
-    qDebug()<<"析构了";
     delete ui;
 }
 

@@ -32,6 +32,7 @@ void PreviewFrame::initTreeView()
     // 通过xml文件加载model
     //    xmlModel->readFile("D:/QtCreatorProjects/treeviewTest/school.xml");
     xmlModel->CreateModelFromDBFile("ICP.db");
+    // dh 被接管，只需要在该处析构就行
     dh_ = xmlModel->getDbHelper();
 }
 
@@ -95,7 +96,7 @@ void PreviewFrame::getAllCameraInfo(QStandardItem * item)
                 // 将label与当前camer对象绑定
                 camera->setShowLabelindex(labelIndex);
                 // 开启线程
-                CameraShowThread* thread =new CameraShowThread(*camera);
+                CameraShowThread* thread =new CameraShowThread(camera);
                 // 打包camer对象与对应的线程对象（如果在camera对象中增加线程属性，那么即陷入循环引用的窘境，需要后续优化程序结构）
                 CameraStruct cameraStruct{camera,thread};
                 // 将camera 对象及对应的线程进存储 在map中，key用camera名称
@@ -110,11 +111,17 @@ void PreviewFrame::getAllCameraInfo(QStandardItem * item)
 
 PreviewFrame::~PreviewFrame()
 {
+    qDebug()<<"开始析构:PreviewFrame";
     if (!(windowCut==nullptr)){
         delete windowCut;
         windowCut = nullptr;
     }
+    if (!(dh_ == nullptr)){
+        delete dh_;
+        dh_ = nullptr;
+    }
     delete ui;
+    qDebug()<<"析构完成:PreviewFrame";
 }
 
 void PreviewFrame::keyPreddEvent(QKeyEvent *event)
@@ -158,7 +165,7 @@ void PreviewFrame::on_treeView_doubleClicked(const QModelIndex &index)
     // 将label与当前camer对象绑定
     camera->setShowLabelindex(labelIndex);
     // 开启线程
-    CameraShowThread* thread =new CameraShowThread(*camera);
+    CameraShowThread* thread =new CameraShowThread(camera);
     // 打包camer对象与对应的线程对象（如果在camera对象中增加线程属性，那么即陷入循环引用的窘境，需要后续优化程序结构）
     CameraStruct cameraStruct{camera,thread};
     // 自定西信号和槽函数将子线程中的img发送法主线程
@@ -287,7 +294,7 @@ void PreviewFrame::on_actionPlay_triggered()
     if(camera->getStartStatus()) return;
     labelIndex=getLabelIndex();
     camera->setShowLabelindex(labelIndex);
-    CameraShowThread* thread =new CameraShowThread(*camera);
+    CameraShowThread* thread =new CameraShowThread(camera);
     CameraStruct cameraStruct{camera,thread};
     cameraMap.insert(camera->getName(),cameraStruct);
     connect(thread,&CameraShowThread::imageShowFinished,this,&PreviewFrame::on_processCapturedImage,Qt::BlockingQueuedConnection);
@@ -356,7 +363,7 @@ void PreviewFrame::on_tbOpenAll_clicked()
 {
     getAllCameraInfo(xmlModel->item(0,0));
     if (cameraMap.isEmpty()) return;
-    for(QString key:cameraMap.keys()){
+    for(QString& key:cameraMap.keys()){
         //        qDebug()<<key;
         //cameraMap[key] 这种写法可能会存在意想不到的风险
         if(!(cameraMap[key].camera->getStartStatus())){
@@ -372,7 +379,7 @@ void PreviewFrame::on_tbOpenAll_clicked()
 void PreviewFrame::on_tbCloseAll_clicked()
 {
     if (cameraMap.isEmpty()) return;
-    for(QString key:cameraMap.keys()){
+    for(QString& key:cameraMap.keys()){
         //        qDebug()<<key;
         //cameraMap[key] 这种写法可能会存在意想不到的风险
         if(cameraMap[key].camera->getStartStatus()){

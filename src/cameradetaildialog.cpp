@@ -17,8 +17,14 @@ CameraDetailDialog::CameraDetailDialog(QWidget *parent) :
 
 CameraDetailDialog::~CameraDetailDialog()
 {
+    qDebug()<<"开始析构 cameraDetailDialog";
     delete ui;
     if (!isCorrectSend) delete mCam;
+    if (!(mCam == nullptr)){
+        delete mCam;
+        mCam=nullptr;
+    }
+    qDebug()<<"析构完成 cameraDetailDialog";
 }
 
 void CameraDetailDialog::on_buttonBox_accepted()
@@ -33,8 +39,8 @@ void CameraDetailDialog::on_buttonBox_accepted()
     QString item_id = QUuid::createUuid().toString().replace("{","").replace("}","").replace("-","");
     mCam->setIPCamera(name,IP,port,userName,password,cameraType,cameraBand,item_id);
     if(mCam->getCameraType()==CameraType::USBCamera){
-        qDebug()<<"进了cameratype";
         QString cameraBand=QString::number( ui->cmbBand->currentIndex());
+        mCam->setCameraBand(cameraBand);
     }
     emit sendCameraDetail(mCam);
     isCorrectSend = true;
