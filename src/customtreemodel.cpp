@@ -4,7 +4,18 @@ CustomTreeModel::CustomTreeModel(QObject *parent) : QStandardItemModel(parent)
 {
     camera_type_dict.insert(0,"IPCamera");
      camera_type_dict.insert(1,"USBCamera");
-    camera_type_dict.insert(2,"OtherType");
+     camera_type_dict.insert(2,"OtherType");
+}
+
+CustomTreeModel::~CustomTreeModel()
+{
+//    qDebug()<<"开始析构了 CustomTreeModel";
+//    if(!(dh==nullptr)){
+//        qDebug()<<"-----------------------";
+//        delete dh;
+//        dh=nullptr;
+//    }
+//    qDebug()<<"析构完成 CustomTreeModel";
 }
 
 void CustomTreeModel::CreateModelFromDBFile(const QString& fileName)
@@ -70,7 +81,7 @@ Camera *CustomTreeModel::bindCamerainfo(QSqlQuery & subQuery)
     QString user_name = subQuery.value(5).toString();
     QString password = subQuery.value(6).toString();
     QString item_id = subQuery.value(7).toString();
-    qDebug()<<"绑定摄像头信息："<<camera_name<<camera_type<<camera_band<<camera_ip<<port<<user_name<<password<<item_id;
+    qDebug()<<"绑定摄像头信息："<<camera_name<<camera_type<<camera_band<<camera_ip<<port<<user_name<<password<<item_id.left(8);
     camera->setIPCamera(camera_name,camera_ip,port,user_name,password,camera_type,camera_band,item_id);
     if(camera->getCameraType()==CameraType::USBCamera){
         camera->setCurrentCameraIndex(camera_band.toInt());
@@ -116,6 +127,7 @@ bool CustomTreeModel::saveCameraNode(QStandardItem*  parentitem,QStandardItem*  
         QString insert_str = QString("insert into camera values ('%1','%2','%3','%4','%5','%6','%7','%8',"
                                      "'%9')").arg(camera_id).arg(item_name).arg(camera_type).arg(camera_band
                                      ).arg(ip).arg(port).arg(user_name).arg(password).arg(item_id);
+
         qDebug()<<insert_str;
         if(!(dh->execInsert(insert_str)))
         {
@@ -125,7 +137,11 @@ bool CustomTreeModel::saveCameraNode(QStandardItem*  parentitem,QStandardItem*  
     }
     return true;
 }
-
+///
+/// \brief CustomTreeModel::saveRemoveResult 在数据库删除节点
+/// \param item当前节点
+/// \return 数据库删除成功/失败
+///
 bool CustomTreeModel::saveRemoveResult(QStandardItem *item)
 {
     qDebug()<<item->whatsThis();
@@ -154,15 +170,14 @@ bool CustomTreeModel::isInDataBase(QString item_name)
 {
     bool isSelect;
     QString execStr = QString("select count(1) from camera where name = '%1'").arg(item_name);
-    qDebug()<<execStr;
+    qDebug()<<"is unique query:"<<execStr;
     QSqlQuery query = dh->execSelect(execStr,isSelect);
     query.next();
     int data_nums = query.value(0).toInt();
-    qDebug()<<data_nums;
+    qDebug()<<"data nums:"<<data_nums;
     if(isSelect && data_nums==0) return false;
     return true;
 }
 
-//void getCurrentNodeAttr
 
 

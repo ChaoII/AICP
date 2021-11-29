@@ -11,6 +11,7 @@ class CustomTreeModel : public QStandardItemModel
     Q_OBJECT
 public:
     explicit CustomTreeModel(QObject *parent = nullptr);
+    ~CustomTreeModel();
 
     void CreateModelFromDBFile(const QString& fileName);
 
@@ -30,7 +31,7 @@ public:
 signals:
 
 private:
-    DbHelper *dh;
+    DbHelper *dh=nullptr;
     QMap<int,QString> camera_type_dict;
 };
 

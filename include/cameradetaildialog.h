@@ -28,7 +28,7 @@ private slots:
 private:
     Ui::CameraDetailDialog *ui;
     QCameraDevice  mCurrentCameraDevice =  QMediaDevices::defaultVideoInput();
-    Camera* mCam;
+    Camera* mCam = nullptr;
     bool isCorrectSend=false;
 };
 

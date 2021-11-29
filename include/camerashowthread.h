@@ -13,7 +13,7 @@ class CameraShowThread : public QThread
     Q_OBJECT
 public:
     CameraShowThread();
-    CameraShowThread(Camera& cam);
+    CameraShowThread(Camera* cam);
     ~CameraShowThread();
 protected:
     void run();
@@ -27,8 +27,8 @@ public:
 private:
     cv::Mat img;
     cv::VideoCapture *cap=nullptr;
-    ImageHelper *imageHelper;
-    Camera mCamera;
+    ImageHelper *imageHelper = nullptr;
+    Camera *mCamera = nullptr;
     bool mIsStoped=false;
 };
 

@@ -63,6 +63,7 @@ private:
     bool mIsStarted= false;
     bool mConnectStatus = false;
     int mCameraShowLabelIndex;
+    static int camera_nums;
 };
 
 #endif // CAMERA_H
