@@ -56,10 +56,10 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 RESOURCES += \
     resources/qrc.qrc
 
-win32:CONFIG(release, debug|release): LIBS += -LC:/opencv/build/x64/vc15/lib/ -lopencv_world451
+win32:CONFIG(release, debug|release): LIBS += -L3rdparty/opencv/build/x64/vc16/lib/ -lopencv_world451
 else:win32:CONFIG(debug, debug|release): LIBS += -LC:/opencv/build/x64/vc15/lib/ -lopencv_world451d
 
-INCLUDEPATH += C:/opencv/build/include
+INCLUDEPATH += ./3rdparty/opencv/build/include
 INCLUDEPATH += ./include
 
 

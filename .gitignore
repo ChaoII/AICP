@@ -2,6 +2,7 @@
 *.d
 *.pro.user
 /build
+/3rdparty
 # Compiled Object files
 *.slo
 *.lo
