@@ -35,6 +35,7 @@ void CameraDetailDialog::on_buttonBox_accepted()
     if(mCam->getCameraType()==CameraType::USBCamera){
         qDebug()<<"进了cameratype";
         QString cameraBand=QString::number( ui->cmbBand->currentIndex());
+        mCam->setCameraBand(cameraBand);
     }
     emit sendCameraDetail(mCam);
     isCorrectSend = true;

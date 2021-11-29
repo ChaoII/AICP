@@ -356,7 +356,7 @@ void PreviewFrame::on_tbOpenAll_clicked()
 {
     getAllCameraInfo(xmlModel->item(0,0));
     if (cameraMap.isEmpty()) return;
-    for(QString key:cameraMap.keys()){
+    for(QString& key:cameraMap.keys()){
         //        qDebug()<<key;
         //cameraMap[key] 这种写法可能会存在意想不到的风险
         if(!(cameraMap[key].camera->getStartStatus())){
@@ -372,7 +372,7 @@ void PreviewFrame::on_tbOpenAll_clicked()
 void PreviewFrame::on_tbCloseAll_clicked()
 {
     if (cameraMap.isEmpty()) return;
-    for(QString key:cameraMap.keys()){
+    for(QString& key:cameraMap.keys()){
         //        qDebug()<<key;
         //cameraMap[key] 这种写法可能会存在意想不到的风险
         if(cameraMap[key].camera->getStartStatus()){

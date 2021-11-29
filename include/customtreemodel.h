@@ -31,7 +31,7 @@ signals:
 
 private:
     DbHelper *dh;
-
+    QMap<int,QString> camera_type_dict;
 };
 
 #endif // CUSTOMTREEMODEL_H

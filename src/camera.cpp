@@ -30,7 +30,7 @@ int Camera::getPort(){return mPort;}
 QString Camera::getUserName(){return mUserName;}
 QString Camera::getPassword(){return mPassword;}
 CameraType Camera::getCameraType(){return mCameraType;}
-CameraBand Camera::getCameraBand(){return mCameraBand;}
+QString Camera::getCameraBand(){return mCameraBand;}
 
 void Camera::setCameraType(QString cameraType)
 {
@@ -44,12 +44,8 @@ void Camera::setCameraType(QString cameraType)
 
 void Camera::setCameraBand(QString cameraBand)
 {
-    if (cameraBand=="HK")
-        mCameraBand= CameraBand::HK;
-    else if(cameraBand=="DH")
-        mCameraBand= CameraBand::DH;
-    else
-        mCameraBand=CameraBand::OtherBand;
+
+     mCameraBand=cameraBand;
 }
 
 // 读取所有USB或类USB摄像头(CSI)

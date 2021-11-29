@@ -2,7 +2,9 @@
 
 CustomTreeModel::CustomTreeModel(QObject *parent) : QStandardItemModel(parent)
 {
-
+    camera_type_dict.insert(0,"IPCamera");
+     camera_type_dict.insert(1,"USBCamera");
+    camera_type_dict.insert(2,"OtherType");
 }
 
 void CustomTreeModel::CreateModelFromDBFile(const QString& fileName)
@@ -102,11 +104,11 @@ bool CustomTreeModel::saveCameraNode(QStandardItem*  parentitem,QStandardItem*  
             return false;
         };
         QString camera_id = QUuid::createUuid().toString().replace("{","").replace("}","").replace("-","");
-        int camera_type = camera->getCameraType();
-        int camera_band = camera->getCameraBand();
-        if(camera_type == CameraType::USBCamera){
-            camera_band = camera->getCurrentCameraIndex();
-        }
+        QString camera_type =camera_type_dict[camera->getCameraType()];
+        QString camera_band = camera->getCameraBand();
+//        if(camera_type == CameraType::USBCamera){
+//            camera_band = camera->getCurrentCameraIndex();
+//        }
         QString ip = camera->getIP();
         int port =camera->getPort();
         QString user_name = camera->getUserName();
@@ -114,6 +116,7 @@ bool CustomTreeModel::saveCameraNode(QStandardItem*  parentitem,QStandardItem*  
         QString insert_str = QString("insert into camera values ('%1','%2','%3','%4','%5','%6','%7','%8',"
                                      "'%9')").arg(camera_id).arg(item_name).arg(camera_type).arg(camera_band
                                      ).arg(ip).arg(port).arg(user_name).arg(password).arg(item_id);
+        qDebug()<<insert_str;
         if(!(dh->execInsert(insert_str)))
         {
             qDebug()<<"节点绑定信息数据保存失败！！";

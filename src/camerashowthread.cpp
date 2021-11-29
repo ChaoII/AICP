@@ -8,9 +8,10 @@ CameraShowThread::CameraShowThread(Camera& cam)
 {
     mCamera = cam;
     imageHelper = new ImageHelper(this);
+    qDebug()<<123<<mCamera.getCameraType()<<CameraType::USBCamera;
     if (mCamera.getCameraType()==CameraType::USBCamera){
-
-        cap = new cv::VideoCapture(mCamera.getCurrentCameraIndex());
+        qDebug()<<mCamera.getCameraBand().toInt();
+        cap = new cv::VideoCapture(mCamera.getCameraBand().toInt());
     }
     else if(mCamera.getCameraType()==CameraType::IPCamera){
         QString IP = mCamera.getIP();
