@@ -121,6 +121,7 @@ void Widget::mouseMoveEvent(QMouseEvent *event)
 
 void Widget::mouseReleaseEvent(QMouseEvent* event)
 {
+    Q_UNUSED(event);
     if(mMoveable)
     {
         mMoveable = false;
