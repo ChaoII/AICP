@@ -1,6 +1,5 @@
 #ifndef PREVIEWFRAME_H
 #define PREVIEWFRAME_H
-#include "servertreemodel.h"
 #include <QWidget>
 #include "camera.h"
 #include "cameradetaildialog.h"
