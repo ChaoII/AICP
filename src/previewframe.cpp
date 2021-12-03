@@ -86,9 +86,9 @@ void PreviewFrame::getAllCameraInfo(QStandardItem * item)
         for(int i = 0;i < item->rowCount();i++)
         {
             QStandardItem * childitem = item->child(i);
-            if(childitem->whatsThis()=="camera"){               // 从对象中取出绑定的cmera对象
+            if(childitem->whatsThis()=="camera"){               // 从item对象中取出绑定的cmera对象
                 Camera* camera = childitem->data().value<Camera*>();
-                QString key =item->text();
+//                QString key =item->text();
                 // 如果camera已经被开启，那么返回
                 if(camera->getStartStatus()) return;
                 // 获取当前摄像头显示的label编号

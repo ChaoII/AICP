@@ -20,7 +20,6 @@ SOURCES += \
     src/imagehelper.cpp \
     src/main.cpp \
     src/previewframe.cpp \
-    src/servertreemodel.cpp \
     src/videolabel.cpp \
     src/videopanel.cpp \
     src/widget.cpp \
@@ -34,7 +33,6 @@ HEADERS += \
     include/dbhelper.h \
     include/imagehelper.h \
     include/previewframe.h \
-    include/servertreemodel.h \
     include/utils.h \
     include/videolabel.h \
     include/videopanel.h \

@@ -20,6 +20,8 @@ CameraShowThread::CameraShowThread(Camera* cam)
         QString RtspUrl_1 = QString("rtsp://%1:%2@%3:%4/h265/ch1/main_stream").arg(userName).arg(password).arg(IP).arg(port);
         qDebug()<<"IP摄像头RTSP地址："<<RtspUrl_1;
         cap = new cv::VideoCapture(RtspUrl_1.toStdString());
+
+        qDebug()<<"IPCamera is opened!";
     }
     cap->set(cv::CAP_PROP_FOURCC,cv::VideoWriter::fourcc('M', 'J', 'P', 'G'));
     cap->set(cv::CAP_PROP_FPS,30);
