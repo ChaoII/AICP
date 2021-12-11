@@ -186,11 +186,6 @@ void PreviewFrame::on_treeView_customContextMenuRequested(const QPoint &pos)
     // camera类型的item右键菜单
     Q_UNUSED(pos);
     QMenu menue;
-    QStringList qss;
-    qss.append("QMenu{background-color:#303030;color:#F0F0F0}");
-    qss.append("QMenu:pressed{color:555555;}");
-    qss.append("QMenu:disabled{color:#b0b0b0;}");
-    menue.setStyleSheet(qss.join(""));
     menue.setAttribute(Qt::WA_DeleteOnClose);
     QModelIndex index = ui->treeView->currentIndex();
     // 如果未选中item直接返回

@@ -1,0 +1,143 @@
+/*--------------- 公共属性---------------*/
+
+QWidget{
+	color:#B4B4B4;
+	background-color:#303030;
+	border:0px;
+}
+
+
+QPushButton
+{
+    background-color:#292929;/*背景色*/
+	min-width:60px;
+    border-style:outset; /*边框风格*/
+    border-width:1px;/*边框宽度*/
+    border-color:#353637; /*边框颜色*/
+    padding:2px;/*内边距*/
+}
+ 
+QPushButton:hover
+{
+
+    background-color:#353637;/*背景色*/
+	min-width:60px;
+    border-style:outset; /*边框风格*/
+    border-width:1px;/*边框宽度*/
+    border-color:#50A0F0; /*边框颜色*/
+    border-radius:5px; /*边框倒角*/
+    padding:2px;/*内边距*/
+}
+QPushButton:pressed
+{
+    background-color:#292929;/*背景色*/
+	min-width:60px;
+    border-style:outset; /*边框风格*/
+    border-width:1px;/*边框宽度*/
+    border-color:green; /*边框颜色*/
+    border-radius:5px; /*边框倒角*/
+    padding:2px;/*内边距*/
+}
+
+QPushButton:disabled{
+
+}
+QPushButton:focus{
+    background-color:#303030;/*背景色*/
+	min-width:60px;
+    border-style:outset; /*边框风格*/
+    border-width:1px;/*边框宽度*/
+    border-color:#50A0F0; /*边框颜色*/
+    border-radius:5px; /*边框倒角*/
+    padding:4px;/*内边距*/
+}
+
+QTabWidget::pane{
+	background-color:#303030;
+	border:0px;
+}
+QTabWidget::pane{
+	border-top:0px;
+}
+QToolButton{
+	border-style:solid;   
+	background: #1F1F1F;  
+	border:1px;  
+}
+
+QToolButton:hover{ 
+	border-style:solid;  
+	border-radius:1px;
+	border:1px;
+	background:#303030;
+	border-radius:5px;padding:2px 4px;  
+}
+
+
+QLineEdit
+{
+	border-style:solid;
+	border-width:1px;
+	border-color:#1F1F1F;	
+	background: #292929;
+	border-radius: 3px;
+	min-height:20px;
+
+}
+
+QLineEdit::hover
+{
+	border-style:solid;
+	border-color:rgb(50,480,40);
+	background-color:#353637;
+}
+
+QLineEdit::disabled
+{
+}
+
+
+QComboBox{
+  font-size:12px;
+  padding: 1px 15px 1px 3px;
+  border:1px solid #1F1F1F;
+  border-radius:2px;
+  background: #292929;
+}
+
+QComboBox::drop-down {
+      width: 15px;
+	  height:20px;
+  }
+
+
+/*----------------------------------------------*/
+
+VideoLabel{
+	font:40 15px;
+	color:#B4B4B4;
+	border:1px solid #181818;
+	background:#303030;
+}
+VideoLabel:focus{
+	border:1px solid #00BB9E;
+	background:#555555;
+}
+
+#label{
+	background-color:#1F1F1F;
+}
+
+#gbTitle,#gbStatusBar{
+	background-color:#1F1F1F;
+}
+
+#gbToolbox,#gbBottomTool{
+	background-color:#262728;
+}
+
+
+
+
+
+

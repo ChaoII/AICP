@@ -20,13 +20,7 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QToolButton:hover{
-		background-color:#353637;
-}
-#groupBox{border-left:1px solid #1F1F1F;}
-Line{
-color:#1F1F1F;
-}</string>
+   <string notr="true"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <property name="spacing">
@@ -123,7 +117,7 @@ color:#1F1F1F;
         </widget>
        </item>
        <item>
-        <widget class="QGroupBox" name="groupBox">
+        <widget class="QGroupBox" name="gbBottomTool">
          <property name="minimumSize">
           <size>
            <width>0</width>
@@ -195,7 +189,7 @@ color:#1F1F1F;
              <string>...</string>
             </property>
             <property name="icon">
-             <iconset resource="qrc.qrc">
+             <iconset resource="../resources/qrc.qrc">
               <normaloff>:/images/openvideos.png</normaloff>:/images/openvideos.png</iconset>
             </property>
             <property name="autoRaise">
@@ -227,7 +221,7 @@ color:#1F1F1F;
              <string>...</string>
             </property>
             <property name="icon">
-             <iconset resource="qrc.qrc">
+             <iconset resource="../resources/qrc.qrc">
               <normaloff>:/images/closevideos.png</normaloff>:/images/closevideos.png</iconset>
             </property>
             <property name="autoRaise">
@@ -265,7 +259,7 @@ color:#1F1F1F;
              <string>...</string>
             </property>
             <property name="icon">
-             <iconset resource="qrc.qrc">
+             <iconset resource="../resources/qrc.qrc">
               <normaloff>:/images/fullscreen.png</normaloff>:/images/fullscreen.png</iconset>
             </property>
             <property name="popupMode">
@@ -306,7 +300,7 @@ color:#1F1F1F;
              <string>...</string>
             </property>
             <property name="icon">
-             <iconset resource="qrc.qrc">
+             <iconset resource="../resources/qrc.qrc">
               <normaloff>:/images/windowcut.png</normaloff>:/images/windowcut.png</iconset>
             </property>
             <property name="iconSize">
@@ -363,7 +357,7 @@ color:#1F1F1F;
              <string>...</string>
             </property>
             <property name="icon">
-             <iconset resource="qrc.qrc">
+             <iconset resource="../resources/qrc.qrc">
               <normaloff>:/images/setting1.png</normaloff>:/images/setting1.png</iconset>
             </property>
             <property name="autoRaise">
@@ -381,7 +375,7 @@ color:#1F1F1F;
   </layout>
   <action name="actionAdd">
    <property name="icon">
-    <iconset resource="qrc.qrc">
+    <iconset resource="../resources/qrc.qrc">
      <normaloff>:/images/add.png</normaloff>:/images/add.png</iconset>
    </property>
    <property name="text">
@@ -390,7 +384,7 @@ color:#1F1F1F;
   </action>
   <action name="actionDelete">
    <property name="icon">
-    <iconset resource="qrc.qrc">
+    <iconset resource="../resources/qrc.qrc">
      <normaloff>:/images/delete.png</normaloff>:/images/delete.png</iconset>
    </property>
    <property name="text">
@@ -399,7 +393,7 @@ color:#1F1F1F;
   </action>
   <action name="actionPlay">
    <property name="icon">
-    <iconset resource="qrc.qrc">
+    <iconset resource="../resources/qrc.qrc">
      <normaloff>:/images/play.png</normaloff>:/images/play.png</iconset>
    </property>
    <property name="text">
@@ -408,7 +402,7 @@ color:#1F1F1F;
   </action>
   <action name="actionStop">
    <property name="icon">
-    <iconset resource="qrc.qrc">
+    <iconset resource="../resources/qrc.qrc">
      <normaloff>:/images/stop.png</normaloff>:/images/stop.png</iconset>
    </property>
    <property name="text">
@@ -420,7 +414,7 @@ color:#1F1F1F;
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="qrc.qrc">
+    <iconset resource="../resources/qrc.qrc">
      <normaloff>:/images/windowcut_1.png</normaloff>:/images/windowcut_1.png</iconset>
    </property>
    <property name="text">
@@ -432,7 +426,7 @@ color:#1F1F1F;
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="qrc.qrc">
+    <iconset resource="../resources/qrc.qrc">
      <normaloff>:/images/windowcut_4.png</normaloff>:/images/windowcut_4.png</iconset>
    </property>
    <property name="text">
@@ -444,7 +438,7 @@ color:#1F1F1F;
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="qrc.qrc">
+    <iconset resource="../resources/qrc.qrc">
      <normaloff>:/images/windowcut_6.png</normaloff>:/images/windowcut_6.png</iconset>
    </property>
    <property name="text">
@@ -456,7 +450,7 @@ color:#1F1F1F;
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="qrc.qrc">
+    <iconset resource="../resources/qrc.qrc">
      <normaloff>:/images/windowcut_9.png</normaloff>:/images/windowcut_9.png</iconset>
    </property>
    <property name="text">
@@ -473,7 +467,7 @@ color:#1F1F1F;
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="qrc.qrc"/>
+  <include location="../resources/qrc.qrc"/>
  </resources>
  <connections/>
 </ui>

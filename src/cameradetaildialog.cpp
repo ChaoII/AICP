@@ -6,11 +6,11 @@ CameraDetailDialog::CameraDetailDialog(QWidget *parent) :
     ui(new Ui::CameraDetailDialog)
 {
     ui->setupUi(this);
-    QStringList qss;
-    qss.append("QDialog{color:#F0F0F0;border:1px solid #AAAAAA;background:#303030;}");
-    qss.append("QLineEdit,QComboBox{color:#F0F0F0;background:#555555;}");
-    qss.append("QLabel{color:#F0F0F0;}");
-    this->setStyleSheet(qss.join(""));
+//    QStringList qss;
+//    qss.append("QDialog{color:#F0F0F0;border:1px solid #AAAAAA;background:#303030;}");
+//    qss.append("QLineEdit,QComboBox{color:#F0F0F0;background:#555555;}");
+//    qss.append("QLabel{color:#F0F0F0;}");
+//    this->setStyleSheet(qss.join(""));
     mCam = new Camera;
     setAttribute(Qt::WA_DeleteOnClose);
 }
@@ -20,10 +20,10 @@ CameraDetailDialog::~CameraDetailDialog()
     qDebug()<<"开始析构 cameraDetailDialog";
     delete ui;
     if (!isCorrectSend) delete mCam;
-    if (!(mCam == nullptr)){
-        delete mCam;
-        mCam=nullptr;
-    }
+//    if (!(mCam == nullptr)){
+//        delete mCam;
+//        mCam=nullptr;
+//    }
     qDebug()<<"析构完成 cameraDetailDialog";
 }
 
@@ -74,20 +74,20 @@ void CameraDetailDialog::on_cmbBand_currentTextChanged(const QString &arg1)
 {
     if(ui->cmbType->currentText()=="USBCamera"){
         ui->editName->setText(arg1);
-        ui->label_2->setVisible(false);
-        ui->label_4->setVisible(false);
-        ui->label_5->setVisible(false);
-        ui->label_3->setVisible(false);
+        ui->label_IP->setVisible(false);
+        ui->label_user_name->setVisible(false);
+        ui->label_port->setVisible(false);
+        ui->label_password->setVisible(false);
         ui->editIP->setVisible(false);
         ui->editUserName->setVisible(false);
         ui->editPort->setVisible(false);
         ui->editPassword->setVisible(false);
     }
     else{
-        ui->label_2->setVisible(true);
-        ui->label_4->setVisible(true);
-        ui->label_5->setVisible(true);
-        ui->label_3->setVisible(true);
+        ui->label_IP->setVisible(true);
+        ui->label_user_name->setVisible(true);
+        ui->label_port->setVisible(true);
+        ui->label_password->setVisible(true);
         ui->editIP->setVisible(true);
         ui->editUserName->setVisible(true);
         ui->editPort->setVisible(true);

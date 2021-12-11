@@ -14,12 +14,7 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">#WindowCut{
-	color:#B4B4B4;
-	background:#262728;
-	border-radius:15px;
-	border:0px;
-}</string>
+   <string notr="true"/>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <property name="leftMargin">
@@ -52,7 +47,7 @@
       <string>...</string>
      </property>
      <property name="icon">
-      <iconset resource="qrc.qrc">
+      <iconset resource="../resources/qrc.qrc">
        <normaloff>:/images/windowcut_1.png</normaloff>:/images/windowcut_1.png</iconset>
      </property>
      <property name="iconSize">
@@ -87,7 +82,7 @@
       <string>...</string>
      </property>
      <property name="icon">
-      <iconset resource="qrc.qrc">
+      <iconset resource="../resources/qrc.qrc">
        <normaloff>:/images/windowcut_4.png</normaloff>:/images/windowcut_4.png</iconset>
      </property>
      <property name="iconSize">
@@ -122,7 +117,7 @@
       <string>...</string>
      </property>
      <property name="icon">
-      <iconset resource="qrc.qrc">
+      <iconset resource="../resources/qrc.qrc">
        <normaloff>:/images/windowcut_6.png</normaloff>:/images/windowcut_6.png</iconset>
      </property>
      <property name="iconSize">
@@ -157,7 +152,7 @@
       <string>...</string>
      </property>
      <property name="icon">
-      <iconset resource="qrc.qrc">
+      <iconset resource="../resources/qrc.qrc">
        <normaloff>:/images/windowcut_9.png</normaloff>:/images/windowcut_9.png</iconset>
      </property>
      <property name="iconSize">
@@ -177,7 +172,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="qrc.qrc"/>
+  <include location="../resources/qrc.qrc"/>
  </resources>
  <connections/>
 </ui>
