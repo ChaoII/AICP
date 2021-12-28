@@ -381,12 +381,12 @@
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="styleSheet">
-        <string notr="true">QTabBar::tab {
+        <string notr="true">#tabMain&gt;QTabBar::tab {
 	max-height:0px;
 }</string>
        </property>
        <property name="currentIndex">
-        <number>0</number>
+        <number>1</number>
        </property>
        <property name="documentMode">
         <bool>false</bool>
@@ -399,7 +399,7 @@
          <string>Tab 1</string>
         </attribute>
        </widget>
-       <widget class="QWidget" name="tabSetting">
+       <widget class="SettingFrame" name="tabSetting">
         <attribute name="title">
          <string>Tab 2</string>
         </attribute>
@@ -437,7 +437,13 @@
   <customwidget>
    <class>PreviewFrame</class>
    <extends>QWidget</extends>
-   <header location="global">previewframe.h</header>
+   <header>previewframe.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>SettingFrame</class>
+   <extends>QWidget</extends>
+   <header location="global">settingframe.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

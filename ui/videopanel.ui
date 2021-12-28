@@ -18,7 +18,7 @@
   </property>
   <action name="action_1">
    <property name="icon">
-    <iconset resource="qrc.qrc">
+    <iconset resource="../resources/qrc.qrc">
      <normaloff>:/images/options.png</normaloff>:/images/options.png</iconset>
    </property>
    <property name="text">
@@ -27,7 +27,7 @@
   </action>
   <action name="action_9">
    <property name="icon">
-    <iconset resource="qrc.qrc">
+    <iconset resource="../resources/qrc.qrc">
      <normaloff>:/images/options.png</normaloff>:/images/options.png</iconset>
    </property>
    <property name="text">
@@ -36,7 +36,7 @@
   </action>
   <action name="action_6">
    <property name="icon">
-    <iconset resource="qrc.qrc">
+    <iconset resource="../resources/qrc.qrc">
      <normaloff>:/images/options.png</normaloff>:/images/options.png</iconset>
    </property>
    <property name="text">
@@ -45,7 +45,7 @@
   </action>
   <action name="action_4">
    <property name="icon">
-    <iconset resource="qrc.qrc">
+    <iconset resource="../resources/qrc.qrc">
      <normaloff>:/images/options.png</normaloff>:/images/options.png</iconset>
    </property>
    <property name="text">
@@ -54,7 +54,7 @@
   </action>
   <action name="actionFullScreen">
    <property name="icon">
-    <iconset resource="qrc.qrc">
+    <iconset resource="../resources/qrc.qrc">
      <normaloff>:/images/fullscreen.png</normaloff>:/images/fullscreen.png</iconset>
    </property>
    <property name="text">
@@ -63,7 +63,7 @@
   </action>
   <action name="actionNormal">
    <property name="icon">
-    <iconset resource="qrc.qrc">
+    <iconset resource="../resources/qrc.qrc">
      <normaloff>:/images/normalscreen.png</normaloff>:/images/normalscreen.png</iconset>
    </property>
    <property name="text">
@@ -72,7 +72,7 @@
   </action>
  </widget>
  <resources>
-  <include location="qrc.qrc"/>
+  <include location="../resources/qrc.qrc"/>
  </resources>
  <connections/>
 </ui>

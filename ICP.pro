@@ -12,6 +12,7 @@ CONFIG += c++11
 
 
 SOURCES += \
+    src/settingframe.cpp \
     src/camera.cpp \
     src/cameradetaildialog.cpp \
     src/camerashowthread.cpp \
@@ -37,9 +38,11 @@ HEADERS += \
     include/videolabel.h \
     include/videopanel.h \
     include/widget.h \
-    include/windowcut.h
+    include/windowcut.h \
+    include/settingframe.h
 
 FORMS += \
+    ui/settingframe.ui \
     ui/cameradetaildialog.ui \
     ui/previewframe.ui \
     ui/videopanel.ui \

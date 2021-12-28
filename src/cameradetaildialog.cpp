@@ -6,11 +6,7 @@ CameraDetailDialog::CameraDetailDialog(QWidget *parent) :
     ui(new Ui::CameraDetailDialog)
 {
     ui->setupUi(this);
-//    QStringList qss;
-//    qss.append("QDialog{color:#F0F0F0;border:1px solid #AAAAAA;background:#303030;}");
-//    qss.append("QLineEdit,QComboBox{color:#F0F0F0;background:#555555;}");
-//    qss.append("QLabel{color:#F0F0F0;}");
-//    this->setStyleSheet(qss.join(""));
+
     mCam = new Camera;
     setAttribute(Qt::WA_DeleteOnClose);
 }
@@ -20,10 +16,7 @@ CameraDetailDialog::~CameraDetailDialog()
     qDebug()<<"开始析构 cameraDetailDialog";
     delete ui;
     if (!isCorrectSend) delete mCam;
-//    if (!(mCam == nullptr)){
-//        delete mCam;
-//        mCam=nullptr;
-//    }
+
     qDebug()<<"析构完成 cameraDetailDialog";
 }
 

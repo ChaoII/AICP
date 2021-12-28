@@ -45,11 +45,7 @@ CameraShowThread::~CameraShowThread()
         cap->release();
         cap=nullptr;
     }
-    // 线程销毁后，不能把camera销毁掉。因为后续camera存储在item中，或者QMap中
-//    if (!(mCamera==nullptr)){
-//        delete mCamera;
-//        mCamera=nullptr;
-//    }
+
     qDebug()<<"析构完成 CameraShowThread";
 }
 
