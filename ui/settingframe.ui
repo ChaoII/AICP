@@ -35,6 +35,16 @@
       <attribute name="title">
        <string>人脸识别设置</string>
       </attribute>
+      <widget class="QTableView" name="tableView">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>931</width>
+         <height>561</height>
+        </rect>
+       </property>
+      </widget>
      </widget>
      <widget class="QWidget" name="tb_generate_settings">
       <attribute name="title">
