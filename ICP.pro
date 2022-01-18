@@ -12,7 +12,6 @@ CONFIG += c++11
 
 
 SOURCES += \
-    src/settingframe.cpp \
     src/camera.cpp \
     src/cameradetaildialog.cpp \
     src/camerashowthread.cpp \
@@ -21,6 +20,7 @@ SOURCES += \
     src/imagehelper.cpp \
     src/main.cpp \
     src/previewframe.cpp \
+    src/settingframe.cpp \
     src/videolabel.cpp \
     src/videopanel.cpp \
     src/widget.cpp \
@@ -34,7 +34,6 @@ HEADERS += \
     include/dbhelper.h \
     include/imagehelper.h \
     include/previewframe.h \
-    include/utils.h \
     include/videolabel.h \
     include/videopanel.h \
     include/widget.h \
