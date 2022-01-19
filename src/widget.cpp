@@ -13,7 +13,13 @@ Widget::Widget(QWidget *parent): QWidget(parent), ui(new Ui::Widget)
 //    ui->tabMain->setMouseTracking(true);
 //    ui->gbStatusBar->setMouseTracking(true);
     ui->gbTitle->setMouseTracking(true);
+//    hk_helper = new HKHelper(this);
+//    hk_helper->play_custom("192.168.1.30",8000,"admin","xiao123456");
+//    connect(hk_helper,&HKHelper::decode_image_cv,[](cv::Mat img){
+//       qDebug()<<"--------------";
+//    });
 }
+
 
 
 Widget::~Widget()

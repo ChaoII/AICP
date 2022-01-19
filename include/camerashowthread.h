@@ -30,6 +30,7 @@ private:
     ImageHelper *imageHelper = nullptr;
     Camera *mCamera = nullptr;
     bool mIsStoped=false;
+    bool use_sdk;
 };
 
 #endif // CAMERASHOWTHREAD_H

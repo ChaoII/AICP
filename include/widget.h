@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QPainter>
 #include <qt_windows.h>
+#include "hkhelper.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -50,6 +51,7 @@ private:
     Ui::Widget *ui;
     QPointF dragPosition;
     bool mMoveable=false;
+    HKHelper * hk_helper;
 //    MousePoss mCurPos;
 //    QPoint last;
 //    const int MOUSE_MARGIN=10;

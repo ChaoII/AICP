@@ -3,6 +3,7 @@ QT       += core gui xml multimedia sql
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
+win32-msvc*:QMAKE_CXXFLAGS += /wd"4828"
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -17,6 +18,7 @@ SOURCES += \
     src/camerashowthread.cpp \
     src/customtreemodel.cpp \
     src/dbhelper.cpp \
+    src/hkhelper.cpp \
     src/imagehelper.cpp \
     src/main.cpp \
     src/previewframe.cpp \
@@ -32,6 +34,7 @@ HEADERS += \
     include/camerashowthread.h \
     include/customtreemodel.h \
     include/dbhelper.h \
+    include/hkhelper.h \
     include/imagehelper.h \
     include/previewframe.h \
     include/videolabel.h \
@@ -57,12 +60,20 @@ RESOURCES += \
     resources/qrc.qrc \
     resources/style.qrc
 
-
+# 添加当前依赖
 INCLUDEPATH += $$PWD/include
 
+# 添加opencv
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/3rdparty/opencv/x64/vc16/lib/ -lopencv_world451
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/3rdparty/opencv/x64/vc16/lib/ -lopencv_world451d
-
 INCLUDEPATH += $$PWD/3rdparty/opencv/include
 DEPENDPATH += $$PWD/3rdparty/opencv/include
+
+# 添加海康SDK
+win32: LIBS += -L$$PWD/3rdparty/HKSDK/lib/ -lHCCore -lHCNetSDK -lPlayCtrl
+INCLUDEPATH += $$PWD/3rdparty/HKSDK/include
+DEPENDPATH += $$PWD/3rdparty/HKSDK/include
+
+
+
 
