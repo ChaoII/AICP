@@ -13,43 +13,46 @@ CameraShowThread::CameraShowThread(Camera* cam)
     if (mCamera->getCameraType()==CameraType::USBCamera){
         cap = new cv::VideoCapture(mCamera->getCameraBand().toInt());
     }
-    else if(mCamera->getCameraType()==CameraType::IPCamera){
+    else if(mCamera->getCameraType()==CameraType::IPCamera)
+    {
+        QString IP = mCamera->getIP();
+        int port = mCamera->getPort();
+        QString userName = mCamera->getUserName();
+        QString password = mCamera->getPassword();
         if (use_sdk){
+            hk_helper = new HKHelper(this);
             //add SDK info
+            hk_helper->play_custom(IP,port,userName,password);
+            connect(hk_helper,&HKHelper::decode_image_cv, [=](cv::Mat img){
+                qDebug()<<"______________________________________________________";
+//                QImage qImage = imageHelper->Mat2QImg(img);
+//                emit imageShowFinished(qImage,mCamera->getShowLabelIndex());
+            });
         }
         else{
-            QString IP = mCamera->getIP();
-            int port = mCamera->getPort();
-            QString userName = mCamera->getUserName();
-            QString password = mCamera->getPassword();
+
             QString RtspUrl_1 = QString("rtsp://%1:%2@%3:%4/h265/ch1/main_stream").arg(userName).arg(password).arg(IP).arg(port);
             qDebug()<<"IP摄像头RTSP地址："<<RtspUrl_1;
             cap = new cv::VideoCapture(RtspUrl_1.toStdString());
             qDebug()<<"IPCamera is opened!";
         }
     }
-    cap->set(cv::CAP_PROP_FOURCC,cv::VideoWriter::fourcc('M', 'J', 'P', 'G'));
-    cap->set(cv::CAP_PROP_FPS,30);
-    //    cap->set(cv::CAP_PROP_FRAME_WIDTH, 1921);//宽度
-
-    //    cap->set(cv::CAP_PROP_FRAME_HEIGHT, 1080);//高度
-
-    qDebug()<<cap->get(cv::CAP_PROP_FRAME_WIDTH);
-    qDebug()<<cap->get(cv::CAP_PROP_FRAME_HEIGHT);
-
+    if(cap!=nullptr){
+        cap->set(cv::CAP_PROP_FOURCC,cv::VideoWriter::fourcc('M', 'J', 'P', 'G'));
+        cap->set(cv::CAP_PROP_FPS,30);
+        //    cap->set(cv::CAP_PROP_FRAME_WIDTH, 1921);//宽度
+        //    cap->set(cv::CAP_PROP_FRAME_HEIGHT, 1080);//高度
+        qDebug()<<cap->get(cv::CAP_PROP_FRAME_WIDTH);
+        qDebug()<<cap->get(cv::CAP_PROP_FRAME_HEIGHT);
+    }
 }
-
 
 
 void CameraShowThread::run()
 {
     if (use_sdk)
     {
-        //            connect([](cv::Mat img){
-        //                QImage qImage = imageHelper->Mat2QImg(img);
-        //                emit imageShowFinished(qImage,mCamera->getShowLabelIndex());
-        //            })
-
+        return;
     }
     else
     {

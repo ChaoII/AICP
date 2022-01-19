@@ -26,15 +26,16 @@ private:
     void uninit_SDK();
     LONG device_login(QString ip,int port,QString user_name ,QString password);
     void show_custom(LONG lUserID);
-//    void DecCBFun(long nPort, char* pBuf, long nSize, FRAME_INFO* pFrameInfo, long nUser, long nReserved2);
+
 
 private:
     bool is_inited;
 
 public:
+    static HKHelper * s_this;
     static LONG g_nPort;
     static cv::Mat g_BGRImage;
-
+    static void CALLBACK DecCBFun(long nPort, char* pBuf, long nSize, FRAME_INFO* pFrameInfo, long nUser, long nReserved2);
 signals:
     void decode_image_cv(cv::Mat img);
 

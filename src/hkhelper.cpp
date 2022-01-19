@@ -13,7 +13,7 @@ void CALLBACK g_ExceptionCallBack(DWORD dwType, LONG lUserID, LONG lHandle, void
         break;
     }
 }
-
+HKHelper* HKHelper::s_this = nullptr;
 HKHelper::HKHelper(QObject *parent):QObject(parent)
 {
     //初始化海康SDK
@@ -24,6 +24,7 @@ HKHelper::HKHelper(QObject *parent):QObject(parent)
     NET_DVR_SetReconnect(10000, true);
     //设置异常消息回调函数
     NET_DVR_SetExceptionCallBack_V30(0, NULL,g_ExceptionCallBack, NULL);
+    s_this = this;
 }
 
 
@@ -100,9 +101,9 @@ void HKHelper::device_logout(LONG lUserID)
     NET_DVR_Logout(lUserID);
 }
 
+
 LONG HKHelper::g_nPort=-100;
-HKHelper hk;
-void CALLBACK DecCBFun(long nPort, char* pBuf, long nSize, FRAME_INFO* pFrameInfo, long nUser, long nReserved2)
+void HKHelper::DecCBFun(long nPort, char* pBuf, long nSize, FRAME_INFO* pFrameInfo, long nUser, long nReserved2)
 {
     if (pFrameInfo->nType == T_YV12)
     {
@@ -116,7 +117,8 @@ void CALLBACK DecCBFun(long nPort, char* pBuf, long nSize, FRAME_INFO* pFrameInf
 
         cvtColor(YUVImage, g_BGRImage, cv::COLOR_YUV2BGR_YV12);
         cv::resize(g_BGRImage,g_BGRImage,cv::Size(0,0),0.5,0.5);
-        emit hk.decode_image_cv(g_BGRImage);
+        emit s_this->decode_image_cv(g_BGRImage);
+        qDebug()<<"__________________________________";
     }
 }
 
