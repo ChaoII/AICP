@@ -3,6 +3,8 @@
 
 #include <QObject>
 #include <QDebug>
+#include <QMutex>
+#include <QTimerEvent>
 #include "HCNetSDK.h"
 #include "plaympeg4.h"
 #include <opencv2/opencv.hpp>
@@ -30,12 +32,21 @@ private:
 
 private:
     bool is_inited;
+    QMutex Mutex;
+    cv::Mat g_BGRImage;
 
 public:
     static HKHelper * s_this;
     static LONG g_nPort;
-    static cv::Mat g_BGRImage;
-    static void CALLBACK DecCBFun(long nPort, char* pBuf, long nSize, FRAME_INFO* pFrameInfo, long nUser, long nReserved2);
+
+    static void HCSdkDecCallBackMend(long nPort, char* pBuf, long nSize, FRAME_INFO* pFrameInfo, long nUser, long nReserved2);
+    static void HCSdkRealImage(LONG,DWORD,BYTE *,DWORD,void *);
+    void init();
+    void timerEvent(QTimerEvent *);
+
+
+
+
 signals:
     void decode_image_cv(cv::Mat img);
 

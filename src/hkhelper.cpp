@@ -1,5 +1,9 @@
 #include "hkhelper.h"
 
+
+QMutex Mutex;
+cv::Mat g_BGRImage;
+
 void CALLBACK g_ExceptionCallBack(DWORD dwType, LONG lUserID, LONG lHandle, void *pUser)
 {
     char tempbuf[256] = {0};
@@ -53,7 +57,7 @@ void HKHelper::real_play_by_win(QString ip, int port, QString user_name, QString
     struPlayInfo.dwLinkMode   = 0;       //0- TCP方式，1- UDP方式，2- 多播方式，3- RTP方式，4-RTP/RTSP，5-RSTP/HTTP
     struPlayInfo.bBlocked     = 1;       //0- 非阻塞取流，1- 阻塞取流
 
-    //直接解码，无需自定义解码
+    //窗体句柄解码
     lRealPlayHandle = NET_DVR_RealPlay_V40(lUserID, &struPlayInfo, NULL, NULL);
     if (lRealPlayHandle < 0)
     {
@@ -103,44 +107,27 @@ void HKHelper::device_logout(LONG lUserID)
 
 
 LONG HKHelper::g_nPort=-100;
-void HKHelper::DecCBFun(long nPort, char* pBuf, long nSize, FRAME_INFO* pFrameInfo, long nUser, long nReserved2)
+void HKHelper::HCSdkDecCallBackMend(long nPort, char* pBuf, long nSize, FRAME_INFO* pFrameInfo, long nUser, long nReserved2)
 {
     if (pFrameInfo->nType == T_YV12)
     {
         qDebug() << "the frame infomation is T_YV12";
-        cv::Mat g_BGRImage;
-        if (g_BGRImage.empty())
+        int width = pFrameInfo->nWidth;
+        int height = pFrameInfo->nHeight;
+        cv::Mat sMat(height+height/2,width,CV_8UC1,(char *)pBuf);
+        cvtColor(sMat,sMat,cv::COLOR_YUV2RGB_YV12);
+        if(!sMat.empty())
         {
-            g_BGRImage.create(pFrameInfo->nHeight, pFrameInfo->nWidth, CV_8UC3);
-        }
-        cv::Mat YUVImage(pFrameInfo->nHeight + pFrameInfo->nHeight / 2, pFrameInfo->nWidth, CV_8UC1, (unsigned char*)pBuf);
-
-        cvtColor(YUVImage, g_BGRImage, cv::COLOR_YUV2BGR_YV12);
-        cv::resize(g_BGRImage,g_BGRImage,cv::Size(0,0),0.5,0.5);
-        emit s_this->decode_image_cv(g_BGRImage);
-        qDebug()<<"__________________________________";
-    }
-}
-
-//实时视频码流数据获取 回调函数
-void CALLBACK g_RealDataCallBack_V30(LONG lPlayHandle, DWORD dwDataType, BYTE *pBuffer, DWORD dwBufSize, void* pUser)
-{
-    if (dwDataType == NET_DVR_STREAMDATA)//码流数据
-    {
-        if (dwBufSize > 0 && HKHelper::g_nPort != -1)
-        {
-            if (!PlayM4_InputData(HKHelper::g_nPort, pBuffer, dwBufSize))
-            {
-                std::cout << "fail input data" << std::endl;
-            }
-            else
-            {
-                std::cout << "success input data" << std::endl;
-            }
-
+            Mutex.lock();
+            g_BGRImage.release();
+            g_BGRImage = sMat;
+            Mutex.unlock();
         }
     }
 }
+
+
+
 
 void HKHelper::play_custom(QString ip,int port,QString user_name ,QString password)
 {
@@ -174,7 +161,7 @@ void HKHelper::show_custom(LONG lUserID)
         {
             if (PlayM4_OpenStream(g_nPort, NULL, 0, 1024 * 1024))         //打开流
             {
-                if (PlayM4_SetDecCallBackExMend(g_nPort,DecCBFun, NULL, 0, NULL))
+                if (PlayM4_SetDecCallBackExMend(g_nPort,HCSdkDecCallBackMend, NULL, 0, NULL))
                 {
                     if (PlayM4_Play(g_nPort, NULL))
                     {
@@ -212,9 +199,40 @@ void HKHelper::show_custom(LONG lUserID)
     struPlayInfo.dwLinkMode = 0;// 0：TCP方式,1：UDP方式,2：多播方式,3 - RTP方式，4-RTP/RTSP,5-RSTP/HTTP
     struPlayInfo.bBlocked = 1; //0-非阻塞取流, 1-阻塞取流, 如果阻塞SDK内部connect失败将会有5s的超时才能够返回,不适合于轮询取流操作.
 
-    if (NET_DVR_RealPlay_V40(lUserID, &struPlayInfo, g_RealDataCallBack_V30, NULL))
+    if (NET_DVR_RealPlay_V40(lUserID, &struPlayInfo, HCSdkRealImage, NULL))
     {
         //        cv::namedWindow("RGBImage2");
     }
+}
+
+//实时视频码流数据获取 回调函数
+void HKHelper::HCSdkRealImage(LONG lPlayHandle, DWORD dwDataType, BYTE *pBuffer, DWORD dwBufSize, void* pUser)
+{
+    if (dwDataType == NET_DVR_STREAMDATA)//码流数据
+    {
+        if (dwBufSize > 0 && HKHelper::g_nPort != -1)
+        {
+            if (!PlayM4_InputData(HKHelper::g_nPort, pBuffer, dwBufSize))
+            {
+                std::cout << "fail input data" << std::endl;
+            }
+            else
+            {
+                std::cout << "success input data" << std::endl;
+            }
+
+        }
+    }
+}
+
+void HKHelper::timerEvent(QTimerEvent *)
+{
+    Mutex.lock();
+    if(!g_BGRImage.empty())
+    {
+        cv::imshow("123",g_BGRImage);
+    }
+
+    Mutex.unlock();
 }
 
