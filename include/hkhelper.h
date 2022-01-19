@@ -32,8 +32,7 @@ private:
 
 private:
     bool is_inited;
-    QMutex Mutex;
-    cv::Mat g_BGRImage;
+
 
 public:
     static HKHelper * s_this;
