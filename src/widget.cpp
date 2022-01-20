@@ -6,9 +6,9 @@
 Widget::Widget(QWidget *parent): QWidget(parent), ui(new Ui::Widget)
 {
     ui->setupUi(this);
-    this->setWindowFlags(windowFlags() | Qt::FramelessWindowHint);
+//    this->setWindowFlags(windowFlags() | Qt::FramelessWindowHint);
 //    setAttribute(Qt::WA_TranslucentBackground);
-    //    this->setWindowFlags(Qt::CustomizeWindowHint);
+        this->setWindowFlags(Qt::CustomizeWindowHint);
     this->setMouseTracking(true);
 //    ui->tabMain->setMouseTracking(true);
 //    ui->gbStatusBar->setMouseTracking(true);
