@@ -14,51 +14,13 @@
    <string>Widget</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="qrc.qrc">
+   <iconset resource="../resources/qrc.qrc">
     <normaloff>:/images/logo.png</normaloff>:/images/logo.png</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">#Widget{
-	color:#B4B4B4;
-	background:#303030;
-	border-radius:20px;
-}
-#treeView{
-	color:#B4B4B4;
-	background:#303030;
-}
-#videoPanel{
-	color:#B4B4B4;
-	border:1px solid #1F1F1F;
-	background:#303030;
-}
-QGroupBox{border:0px solid #AAAAAA;
-			background-color:#262728;}
-
-#gbTitle,#gbStatusBar{background-color:#1F1F1F;}
-
-
-#tbClose:hover,#tbMaxium:hover,#tbMinium:hover{
-	background-color:#353637;
-}
-QMessageBox{
-	font-size:15px;
-	color:#B4B4B4;
-	background-color:#303030;
-	border-radius:5px；
-}
-QMessageBox&gt;QPushButton{
-	color:#B4B4B4;
-	background:#303030;
-	border-radius:5px；
-}
-
-</string>
+   <string notr="true"/>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_2">
-   <property name="spacing">
-    <number>0</number>
-   </property>
+  <layout class="QGridLayout" name="gridLayout">
    <property name="leftMargin">
     <number>0</number>
    </property>
@@ -71,7 +33,7 @@ QMessageBox&gt;QPushButton{
    <property name="bottomMargin">
     <number>0</number>
    </property>
-   <item>
+   <item row="0" column="0">
     <layout class="QVBoxLayout" name="verticalLayout">
      <property name="spacing">
       <number>0</number>
@@ -130,7 +92,7 @@ QMessageBox&gt;QPushButton{
            <enum>Qt::RichText</enum>
           </property>
           <property name="pixmap">
-           <pixmap resource="qrc.qrc">:/images/logo1.png</pixmap>
+           <pixmap resource="../resources/qrc.qrc">:/images/logo1.png</pixmap>
           </property>
           <property name="scaledContents">
            <bool>true</bool>
@@ -177,7 +139,7 @@ QMessageBox&gt;QPushButton{
            <string>...</string>
           </property>
           <property name="icon">
-           <iconset resource="qrc.qrc">
+           <iconset resource="../resources/qrc.qrc">
             <normaloff>:/images/minium.png</normaloff>:/images/minium.png</iconset>
           </property>
           <property name="iconSize">
@@ -187,7 +149,7 @@ QMessageBox&gt;QPushButton{
            </size>
           </property>
           <property name="autoRaise">
-           <bool>true</bool>
+           <bool>false</bool>
           </property>
          </widget>
         </item>
@@ -212,7 +174,7 @@ QMessageBox&gt;QPushButton{
            <string>...</string>
           </property>
           <property name="icon">
-           <iconset resource="qrc.qrc">
+           <iconset resource="../resources/qrc.qrc">
             <normaloff>:/images/maxium.png</normaloff>:/images/maxium.png</iconset>
           </property>
           <property name="iconSize">
@@ -222,7 +184,7 @@ QMessageBox&gt;QPushButton{
            </size>
           </property>
           <property name="autoRaise">
-           <bool>true</bool>
+           <bool>false</bool>
           </property>
          </widget>
         </item>
@@ -247,7 +209,7 @@ QMessageBox&gt;QPushButton{
            <string>...</string>
           </property>
           <property name="icon">
-           <iconset resource="qrc.qrc">
+           <iconset resource="../resources/qrc.qrc">
             <normaloff>:/images/close.png</normaloff>:/images/close.png</iconset>
           </property>
           <property name="iconSize">
@@ -260,7 +222,7 @@ QMessageBox&gt;QPushButton{
            <enum>QToolButton::DelayedPopup</enum>
           </property>
           <property name="autoRaise">
-           <bool>true</bool>
+           <bool>false</bool>
           </property>
          </widget>
         </item>
@@ -268,7 +230,7 @@ QMessageBox&gt;QPushButton{
       </widget>
      </item>
      <item>
-      <widget class="QGroupBox" name="groupBox">
+      <widget class="QGroupBox" name="gbToolbox">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
          <horstretch>0</horstretch>
@@ -327,7 +289,7 @@ QMessageBox&gt;QPushButton{
            <string>预览</string>
           </property>
           <property name="icon">
-           <iconset resource="qrc.qrc">
+           <iconset resource="../resources/qrc.qrc">
             <normaloff>:/images/preview.png</normaloff>:/images/preview.png</iconset>
           </property>
           <property name="iconSize">
@@ -374,7 +336,7 @@ QMessageBox&gt;QPushButton{
            <string>设置</string>
           </property>
           <property name="icon">
-           <iconset resource="qrc.qrc">
+           <iconset resource="../resources/qrc.qrc">
             <normaloff>:/images/setting.png</normaloff>:/images/setting.png</iconset>
           </property>
           <property name="iconSize">
@@ -419,17 +381,8 @@ QMessageBox&gt;QPushButton{
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="styleSheet">
-        <string notr="true">QTabBar::tab {
-max-height:0px;
-background-color:#303030;
-}
-QTabWidget::pane{
-
-background-color:#303030;
-border:0px;
-}
-QTabWidget::pane{
-border-top:0px;
+        <string notr="true">#tabMain&gt;QTabBar::tab {
+	max-height:0px;
 }</string>
        </property>
        <property name="currentIndex">
@@ -446,33 +399,37 @@ border-top:0px;
          <string>Tab 1</string>
         </attribute>
        </widget>
-       <widget class="QWidget" name="tabSetting">
+       <widget class="SettingFrame" name="tabSetting">
         <attribute name="title">
          <string>Tab 2</string>
         </attribute>
        </widget>
       </widget>
      </item>
+     <item>
+      <widget class="QGroupBox" name="gbStatusBar">
+       <property name="minimumSize">
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="title">
+        <string/>
+       </property>
+       <property name="flat">
+        <bool>false</bool>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_3"/>
+      </widget>
+     </item>
     </layout>
-   </item>
-   <item>
-    <widget class="QGroupBox" name="gbStatusBar">
-     <property name="minimumSize">
-      <size>
-       <width>20</width>
-       <height>20</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>20</height>
-      </size>
-     </property>
-     <property name="title">
-      <string/>
-     </property>
-    </widget>
    </item>
   </layout>
  </widget>
@@ -480,12 +437,18 @@ border-top:0px;
   <customwidget>
    <class>PreviewFrame</class>
    <extends>QWidget</extends>
-   <header location="global">previewframe.h</header>
+   <header>previewframe.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>SettingFrame</class>
+   <extends>QWidget</extends>
+   <header location="global">settingframe.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="qrc.qrc"/>
+  <include location="../resources/qrc.qrc"/>
  </resources>
  <connections/>
 </ui>

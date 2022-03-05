@@ -86,9 +86,9 @@ void PreviewFrame::getAllCameraInfo(QStandardItem * item)
         for(int i = 0;i < item->rowCount();i++)
         {
             QStandardItem * childitem = item->child(i);
-            if(childitem->whatsThis()=="camera"){               // 从对象中取出绑定的cmera对象
+            if(childitem->whatsThis()=="camera"){               // 从item对象中取出绑定的cmera对象
                 Camera* camera = childitem->data().value<Camera*>();
-                QString key =item->text();
+//                QString key =item->text();
                 // 如果camera已经被开启，那么返回
                 if(camera->getStartStatus()) return;
                 // 获取当前摄像头显示的label编号
@@ -186,11 +186,6 @@ void PreviewFrame::on_treeView_customContextMenuRequested(const QPoint &pos)
     // camera类型的item右键菜单
     Q_UNUSED(pos);
     QMenu menue;
-    QStringList qss;
-    qss.append("QMenu{background-color:#303030;color:#F0F0F0}");
-    qss.append("QMenu:pressed{color:555555;}");
-    qss.append("QMenu:disabled{color:#b0b0b0;}");
-    menue.setStyleSheet(qss.join(""));
     menue.setAttribute(Qt::WA_DeleteOnClose);
     QModelIndex index = ui->treeView->currentIndex();
     // 如果未选中item直接返回

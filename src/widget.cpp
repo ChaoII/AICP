@@ -6,14 +6,20 @@
 Widget::Widget(QWidget *parent): QWidget(parent), ui(new Ui::Widget)
 {
     ui->setupUi(this);
-    this->setWindowFlags(windowFlags() | Qt::FramelessWindowHint);
+//    this->setWindowFlags(windowFlags() | Qt::FramelessWindowHint);
 //    setAttribute(Qt::WA_TranslucentBackground);
-    //    this->setWindowFlags(Qt::CustomizeWindowHint);
+        this->setWindowFlags(Qt::CustomizeWindowHint);
     this->setMouseTracking(true);
 //    ui->tabMain->setMouseTracking(true);
 //    ui->gbStatusBar->setMouseTracking(true);
     ui->gbTitle->setMouseTracking(true);
+//    hk_helper = new HKHelper(this);
+//    hk_helper->play_custom("192.168.1.30",8000,"admin","xiao123456");
+//    connect(hk_helper,&HKHelper::decode_image_cv,[](cv::Mat img){
+//       qDebug()<<"--------------";
+//    });
 }
+
 
 
 Widget::~Widget()
@@ -121,6 +127,7 @@ void Widget::mouseMoveEvent(QMouseEvent *event)
 
 void Widget::mouseReleaseEvent(QMouseEvent* event)
 {
+    Q_UNUSED(event);
     if(mMoveable)
     {
         mMoveable = false;

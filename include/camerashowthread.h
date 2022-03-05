@@ -6,6 +6,7 @@
 #include "camera.h"
 #include "imagehelper.h"
 #include <QMutex>
+#include "hkhelper.h"
 
 
 class CameraShowThread : public QThread
@@ -25,11 +26,13 @@ public:
     void on_stop_show_video();
 
 private:
+    HKHelper * hk_helper=nullptr;
     cv::Mat img;
     cv::VideoCapture *cap=nullptr;
     ImageHelper *imageHelper = nullptr;
     Camera *mCamera = nullptr;
     bool mIsStoped=false;
+    bool use_sdk;
 };
 
 #endif // CAMERASHOWTHREAD_H
